@@ -4,14 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clip Maker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Clip Maker</h1>
-    <input id="apiKey" type="text" placeholder="Coloque sua chave de API do GEMINI">
-    <button id="uploadWidget" class="cloudinary-button">Upload files</button>
-    <p id="status"></p>
-    <video id="video" src="" controls></video>
+    <div class="min-h-screen flex items-center justify-center px-6 py-12">
+        <div class="w-full max-w-2xl">
+            <!-- Header -->
+            <div class="text-center mb-24">
+                <div class="flex items-center justify-center gap-3 mb-4">
+                    <svg class="w-10 h-10 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                    </svg>
+                    <h1 class="text-5xl font-bold tracking-tight text-white">
+                        Clip Maker
+                    </h1>
+                </div>
+                <p class="text-slate-300 text-lg font-light tracking-wide">
+                    Extraia momentos virais com IA
+                </p>
+            </div>
+
+            <!-- Main Card -->
+            <div class="glass-card rounded-2xl p-8 mb-12 fade-in">
+                <!-- API Key Input -->
+                <div class="mb-8">
+                    <label class="block text-slate-200 text-sm font-medium mb-3 ml-1">
+                        Chave da API Gemini
+                    </label>
+                    <input 
+                        id="apiKey" 
+                        type="password" 
+                        placeholder="Cole sua chave de API aqui"
+                        class="glass-input w-full px-5 py-4 text-white placeholder-slate-400 rounded-xl text-sm"
+                    >
+                </div>
+
+                <!-- Upload Button -->
+                <button 
+                    id="uploadWidget"
+                    class="gradient-button w-full py-4 px-6 text-white font-semibold rounded-xl flex items-center justify-center gap-3 shadow-lg"
+                >
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                    </svg>
+                    <span>Selecionar vídeo</span>
+                </button>
+
+                <!-- Status Indicator -->
+                <div id="status" class="mt-8 text-center">
+                    <p class="text-slate-400 text-sm font-light">Pronto para começar</p>
+                </div>
+            </div>
+
+            <!-- Video Preview -->
+            <div id="videoContainer" class="hidden fade-in">
+                <p class="text-slate-300 text-sm font-medium mb-4 ml-1">Seu clipe viral</p>
+                <div class="video-container bg-black/50">
+                    <video id="video" src="" controls class="rounded-lg"></video>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://upload-widget.cloudinary.com/latest/global/all.js"></script>
     <script src="script.js"></script>
 </body>
